@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains job definitions in schema version 2.0 format -->
+
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+
+  <schedule>
+
+    <!--BlueCatFirstJob 任务配置-->
+    <job>
+      <name>BlueCatFirstJob</name>
+      <group>BlueCatFirst</group>
+      <description>Execute name is BlueCatFirstJob!</description>
+      <job-type>BlueCat.WindowsService.QuartzJobs.BlueCatFirstJob,BlueCat.WindowsService</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>BlueCatFirstJobTrigger</name>
+        <group>BlueCatFirst</group>
+        <job-name>BlueCatFirstJob</job-name>
+        <job-group>BlueCatFirst</job-group>
+        <start-time>2015-01-22T00:00:00+08:00</start-time>
+        <cron-expression>0/5 * * * * ?</cron-expression>
+      </cron>
+    </trigger>
+
+    <!--TestJob测试 任务配置-->
+    <job>
+      <name>BlueCatSecondJob</name>
+      <group>BlueCatSecond</group>
+      <description>Execute name is BlueCatSecondJob!</description>
+      <job-type>BlueCat.WindowsService.QuartzJobs.BlueCatSecondJob,BlueCat.WindowsService</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>BlueCatSecondJobTrigger</name>
+        <group>BlueCatSecond</group>
+        <job-name>BlueCatSecondJob</job-name>
+        <job-group>BlueCatSecond</job-group>
+        <start-time>2015-01-22T00:00:00+08:00</start-time>
+        <cron-expression>0/3 * * * * ?</cron-expression>
+      </cron>
+    </trigger>
+    
+  </schedule>
+</job-scheduling-data>
